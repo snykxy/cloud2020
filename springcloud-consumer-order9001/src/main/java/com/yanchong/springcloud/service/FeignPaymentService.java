@@ -16,6 +16,6 @@ public interface FeignPaymentService {
 
 
     @GetMapping("/payment/getTimeOut")
-    public String getTimeOut();
+    String getTimeOut();
 
 }

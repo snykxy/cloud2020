@@ -1,6 +1,8 @@
 package com.yanchong.springcloud.controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.yanchong.springcloud.entities.CommonResult;
 import com.yanchong.springcloud.entities.Payment;
 import com.yanchong.springcloud.service.FeignPaymentService;
@@ -41,9 +43,17 @@ public class OrderController {
     }
 
     @GetMapping("/order/getTimeOut")
+    @HystrixCommand(fallbackMethod = "timeOutHandler",
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value="6500")
+            })
     public String getTimeOut()
     {
         return feignPaymentService.getTimeOut();
     }
 
+
+    public String timeOutHandler(){
+        return "服务调用方超时间。。。。。。。。了";
+    }
 }
