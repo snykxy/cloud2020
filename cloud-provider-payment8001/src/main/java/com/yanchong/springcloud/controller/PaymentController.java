@@ -80,4 +80,29 @@ public class PaymentController {
         return new CommonResult(200,"全局的兜底降级方法");
     }
 
+
+
+
+    //服务熔断
+    @GetMapping("/payment/rongduan/{id}")
+    @HystrixCommand(fallbackMethod = "rongduanExceptionHandler",
+            commandProperties = {
+                @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),    //是否开启熔断器
+                @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),  //请求次数
+                @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),    //时间窗口期
+                @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),    //失败率达到多少后跳闸
+
+    })
+    public String rongduan(@PathVariable("id") int id){
+        if(id<0){
+            throw new RuntimeException("小于0,报错了....");
+        }
+
+        return "熔断正常提供服务...........";
+    }
+
+    public String rongduanExceptionHandler(@PathVariable("id") int id){
+        return "*****熔断了,失败了." + id;
+    }
+
 }

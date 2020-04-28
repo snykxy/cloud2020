@@ -56,4 +56,16 @@ public class OrderController {
     public String timeOutHandler(){
         return "服务调用方超时间。。。。。。。。了";
     }
+
+
+
+    //=========服务熔断
+    @GetMapping("/order/get/rongduan/{id}")
+    public String rongduan(@PathVariable("id") int id){
+        return feignPaymentService.rongduan(id);
+    }
+
+
+
+
 }

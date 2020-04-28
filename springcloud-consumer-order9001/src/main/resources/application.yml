@@ -19,3 +19,6 @@ spring:
 ribbon:
   ReadTimeout: 5000 #连接超时
   ConnectTimeout: 5000  #响应超时
+feign:
+  hystrix:
+    enabled: true
