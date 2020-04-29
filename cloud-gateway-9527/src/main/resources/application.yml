@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: gateway9527
+  cloud:
+    gateway:
+      routes:
+        - id: payment_routh
+          uri: http://localhost:8001
+          predicates:
+            - Path=/payment/get/**
+        - id: payment_routh
+          uri: http://localhost:8001
+          predicates:
+            - Path=/payment/create/**
+
+
+eureka:
+  instance:
+    appname: gateway9527
+  client:
+    register-with-eureka: true #false表示不向注册中心注册自己
+    fetch-registry: true #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    service-url:
+      defaultZone:
+        http://eureka7001:7001/eureka,http://eureka7002:7002/eureka  #集群版
