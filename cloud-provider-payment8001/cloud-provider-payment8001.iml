@@ -59,6 +59,7 @@
     <orderEntry type="library" name="Maven: io.reactivex:rxjava-reactive-streams:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
     <orderEntry type="module" module-name="cloud-common" />
+    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.29" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-eureka-client:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.eureka:eureka-client:1.9.13" level="project" />

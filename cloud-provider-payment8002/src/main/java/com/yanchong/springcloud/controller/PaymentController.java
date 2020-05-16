@@ -34,4 +34,12 @@ public class PaymentController {
         Payment payment = paymentService.getById(id);
         return new CommonResult<>(200,"成功=+++++++++++====" + port,payment);
     }
+
+    @PostMapping("/payment/testBatchInsert")
+    public CommonResult batchInsert(){
+
+        paymentService.testBatchInsert();
+
+        return new CommonResult<>(200,"批量插入成功",null);
+    }
 }

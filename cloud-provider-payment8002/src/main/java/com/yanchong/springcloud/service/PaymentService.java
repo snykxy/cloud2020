@@ -8,4 +8,6 @@ public interface PaymentService {
     public int create(Payment payment);
 
     public Payment getById(int id);
+
+    void testBatchInsert();
 }

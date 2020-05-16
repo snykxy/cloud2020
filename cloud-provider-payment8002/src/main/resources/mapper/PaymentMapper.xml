@@ -16,4 +16,13 @@
         INSERT INTO PAYMENT(SERIAL) VALUES(#{serial})
     </insert>
 
+
+    <insert id="testBatchInsert" parameterType="Payment" >
+
+        INSERT INTO PAYMENT values
+        <foreach collection="paymentList" item="payment" separator=",">
+            (#{payment.id},#{payment.serial})
+        </foreach>
+    </insert>
+
 </mapper>
